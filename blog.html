@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0f1113" />
+  <meta name="description" content="Linda Peltz — market notes, neighborhood guides, and curated real estate insights for Fresno & the Central Valley." />
+  <title>Blog | Linda Peltz</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400,500,600,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --cream:#F5F1E9;
+      --cream-2:#EFE8DD;
+      --charcoal:#141617;
+      --charcoal-2:#0f1113;
+      --ink:#1a1c1d;
+      --muted:#6e6a63;
+      --terracotta:#B5674A;
+      --line:rgba(20,22,23,.16);
+      --radius: 22px;
+      --max: 1120px;
+      --ease: cubic-bezier(.2,.8,.2,1);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Lato, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+      color:var(--ink);
+      background:linear-gradient(180deg,var(--cream) 0%, var(--cream-2) 55%, var(--cream) 100%);
+      letter-spacing:.2px;
+      overflow-x:hidden;
+    }
+    a{color:inherit; text-decoration:none}
+    .container{width: min(var(--max), calc(100% - 48px)); margin-inline:auto;}
+
+    /* Cursor overlay (system cursor stays visible for scroll stability) */
+    @media (hover:none), (pointer:coarse){
+      .cursor, .cursor-dot{display:none!important;}
+    }
+    .cursor{
+      position:fixed; left:0; top:0;
+      width:38px; height:38px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.32);
+      background:rgba(245,241,233,.08);
+      backdrop-filter: blur(10px);
+      transform: translate(-50%, -50%);
+      pointer-events:none;
+      z-index:10000;
+      transition: width 220ms var(--ease), height 220ms var(--ease), border-color 220ms var(--ease), background 220ms var(--ease), transform 140ms linear;
+      mix-blend-mode: difference;
+    }
+    .cursor-dot{
+      position:fixed; left:0; top:0;
+      width:6px; height:6px;
+      border-radius:999px;
+      background:rgba(181,103,74,.95);
+      transform: translate(-50%, -50%);
+      pointer-events:none;
+      z-index:10001;
+      transition: transform 110ms linear, opacity 180ms var(--ease);
+    }
+
+    /* Sticky nav */
+    .nav-wrap{position:sticky; top:0; z-index:999; background:rgba(245,241,233,.86); backdrop-filter: blur(10px); border-bottom:1px solid rgba(20,22,23,.08)}
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:16px 0; gap:14px}
+    .brand{display:flex; align-items:baseline; gap:10px}
+    .brand .monogram{font-family:"Bodoni Moda", serif; font-weight:600; font-size:20px; letter-spacing:.6px;}
+    .brand .meta{font-size:12px; color:var(--muted); letter-spacing:.14em; text-transform:uppercase;}
+    .nav-links{display:flex; align-items:center; gap:14px; font-size:13px; letter-spacing:.12em; text-transform:uppercase; color:rgba(26,28,29,.86)}
+    .nav-links a{padding:10px 8px; border-radius:999px; transition: background 200ms var(--ease)}
+    .nav-links a:hover{background:rgba(20,22,23,.05)}
+    .btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:12px 16px; border-radius:999px; border:1px solid rgba(20,22,23,.14); background:rgba(245,241,233,.65); font-size:13px; letter-spacing:.12em; text-transform:uppercase; transition: transform 200ms var(--ease), border-color 200ms var(--ease)}
+    .btn:hover{transform: translateY(-1px); border-color: rgba(181,103,74,.55)}
+
+    /* Header */
+    .hero{
+      background:
+        radial-gradient(1200px 700px at 20% 10%, rgba(181,103,74,.12), transparent 55%),
+        linear-gradient(180deg, var(--charcoal-2), var(--charcoal));
+      color:var(--cream);
+      border-bottom:1px solid rgba(255,255,255,.14);
+    }
+    .hero-inner{padding: 64px 0 46px 0;}
+    h1{margin:0; font-family:"Bodoni Moda", serif; font-weight:600; letter-spacing:.02em; line-height:1.02; font-size: clamp(36px, 4.8vw, 60px)}
+    .sub{margin:14px 0 0 0; color: rgba(245,241,233,.82); line-height:1.8; max-width: 70ch}
+
+    /* Layout */
+    main{padding: 44px 0 84px 0;}
+    .grid{display:grid; gap:18px; grid-template-columns: 1.2fr .8fr; align-items:start}
+    @media (max-width: 980px){.grid{grid-template-columns:1fr}}
+
+    .card{border:1px solid rgba(20,22,23,.10); border-radius: var(--radius); background: rgba(245,241,233,.72); box-shadow: 0 24px 70px rgba(20,22,23,.06)}
+    .pad{padding:24px;}
+
+    /* Posts list */
+    .post{
+      padding: 18px;
+      border-radius: 18px;
+      border:1px solid rgba(20,22,23,.10);
+      background: rgba(20,22,23,.02);
+      transition: transform 220ms var(--ease), border-color 220ms var(--ease), background 220ms var(--ease);
+    }
+    .post:hover{transform: translateY(-2px); border-color: rgba(181,103,74,.45); background: rgba(181,103,74,.04)}
+    .post h2{margin:0; font-family:"Bodoni Moda", serif; font-weight:600; font-size: 26px; line-height:1.1}
+    .meta{margin-top:10px; display:flex; flex-wrap:wrap; gap:10px; color: var(--muted); font-size: 12px; letter-spacing:.14em; text-transform:uppercase}
+    .excerpt{margin: 12px 0 0 0; color: rgba(26,28,29,.88); line-height:1.85}
+
+    /* Article */
+    article h2{margin:0; font-family:"Bodoni Moda", serif; font-weight:600; font-size: clamp(30px, 3.2vw, 44px); line-height:1.08}
+    article .byline{margin-top:10px; color: var(--muted); font-size: 12px; letter-spacing:.14em; text-transform:uppercase}
+    article .content{margin-top:18px; line-height:1.9; font-size: 16px; color: rgba(26,28,29,.92)}
+    article .content p{margin: 0 0 14px 0}
+    article .content h3{margin: 22px 0 10px 0; font-family:"Bodoni Moda", serif; font-weight:600; font-size: 22px}
+    article .content ul{margin: 0 0 14px 18px}
+    .back{display:inline-flex; gap:10px; align-items:center; margin-bottom:16px; color: rgba(26,28,29,.86)}
+
+    /* Sidebar */
+    .field{display:grid; gap:8px; margin-top: 10px}
+    label{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color: var(--muted)}
+    input, select{
+      width:100%; padding: 14px 14px; border-radius: 16px; border:1px solid rgba(20,22,23,.12);
+      background: rgba(245,241,233,.84); font: inherit; color: var(--charcoal);
+      outline:none; transition: border-color 180ms var(--ease), box-shadow 180ms var(--ease)
+    }
+    input:focus, select:focus{border-color: rgba(181,103,74,.55); box-shadow: 0 0 0 5px rgba(181,103,74,.12)}
+
+    .pill{display:flex; justify-content:space-between; align-items:center; padding:14px 16px; border-radius:16px; background: rgba(20,22,23,.03); border:1px solid rgba(20,22,23,.08); margin-top: 12px}
+    .pill .k{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color: var(--muted)}
+    .pill .v{font-weight:700; color: var(--charcoal)}
+
+    footer{padding: 40px 0 54px 0; border-top:1px solid rgba(20,22,23,.08); color: var(--muted); font-size: 13px; line-height:1.8}
+
+    @media (prefers-reduced-motion: reduce){
+      .cursor,.cursor-dot{display:none!important}
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+
+  <header class="nav-wrap" role="banner">
+    <div class="container">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="./index.html">
+          <span class="monogram">Linda Peltz</span>
+          <span class="meta">REALTOR® | eXp Realty</span>
+        </a>
+        <div class="nav-links" role="navigation">
+          <a href="./index.html#about" data-cursor="link">About</a>
+          <a href="./index.html#listings" data-cursor="link">Featured</a>
+          <a href="./blog.html" aria-current="page" data-cursor="link">Blog</a>
+          <a href="./index.html#contact" data-cursor="link">Contact</a>
+        </div>
+        <a class="btn" href="./index.html#contact" data-cursor="link">Inquire</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" aria-label="Blog header">
+    <div class="container">
+      <div class="hero-inner">
+        <h1>Market notes & neighborhood guides</h1>
+        <p class="sub">A space for Linda to share local perspective—pricing signals, design-forward prep tips, and what’s quietly changing in Fresno and the Central Valley.</p>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <div class="container">
+      <div class="grid">
+        <div class="card pad">
+          <div id="viewList">
+            <div id="posts"></div>
+          </div>
+
+          <div id="viewPost" hidden>
+            <a class="back" href="#" id="backLink" data-cursor="link">← Back to all posts</a>
+            <article id="article"></article>
+          </div>
+        </div>
+
+        <aside class="card pad">
+          <div style="font-family:'Bodoni Moda',serif; font-weight:600; font-size:22px; line-height:1.2">Browse</div>
+
+          <div class="field">
+            <label for="q">Search</label>
+            <input id="q" placeholder="Pricing, Clovis, staging, schools…" />
+          </div>
+
+          <div class="field">
+            <label for="tag">Category</label>
+            <select id="tag">
+              <option value="">All</option>
+            </select>
+          </div>
+
+          <div class="pill"><span class="k">Location</span><span class="v">Fresno • Central Valley</span></div>
+          <div class="pill"><span class="k">Style</span><span class="v">Warm • Editorial • Useful</span></div>
+
+          <p style="margin:14px 0 0 0; color: var(--muted); line-height:1.8; font-size: 14px">
+            Want this to be a true CMS?
+            Next step is a lightweight setup like Sanity/Contentful or a simple Markdown repo workflow.
+          </p>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div style="display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap">
+        <div>
+          <div style="font-family:'Bodoni Moda',serif; font-weight:600; color:var(--charcoal)">Linda Peltz</div>
+          <div>REALTOR® | eXp Realty • Fresno, CA & Central Valley</div>
+        </div>
+        <div>© <span id="year"></span></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ---- Blog content (edit here) ----
+    // This is a functioning blog page without a backend:
+    // - list view
+    // - single post view via #/post/<slug>
+    // - search + category filter
+    const POSTS = [
+      {
+        slug: 'how-to-prepare-a-luxury-listing-without-over-improving',
+        title: 'How to prepare a luxury listing (without over‑improving)',
+        date: '2026-03-13',
+        tags: ['Sellers', 'Presentation'],
+        excerpt: 'A calm, design-forward checklist that protects ROI—what to refresh, what to leave alone, and how to tell the story of the home.',
+        html: `
+          <p>Luxury buyers notice the small things first: light, texture, and how a home feels when you step inside. The goal isn’t to renovate—it’s to <strong>remove friction</strong> and elevate the experience.</p>
+          <h3>Start with the “editorial edit”</h3>
+          <ul>
+            <li>Declutter surfaces (think: gallery, not storage)</li>
+            <li>Neutralize strong scents and harsh lighting temperatures</li>
+            <li>Repair anything that signals “deferred maintenance”</li>
+          </ul>
+          <h3>Where upgrades can backfire</h3>
+          <p>Highly personal finishes can narrow your buyer pool. If it’s not timeless, it’s a risk. Instead, focus on cleanliness, paint, landscape clarity, and a coherent palette.</p>
+          <p>If you’d like, I can provide a room-by-room plan tailored to your property and timeline.</p>
+        `
+      },
+      {
+        slug: 'fresno-spring-market-what-buyers-are-quietly-responding-to',
+        title: 'Fresno spring market: what buyers are quietly responding to',
+        date: '2026-03-06',
+        tags: ['Market Notes', 'Buyers'],
+        excerpt: 'Beyond price: presentation, layout flow, and location tradeoffs that are shaping buyer decisions right now.',
+        html: `
+          <p>In a competitive market, buyers move quickly—yet they hesitate on homes that feel uncertain. The homes getting the strongest attention share the same theme: <strong>clarity</strong>.</p>
+          <h3>Signals that reduce hesitation</h3>
+          <ul>
+            <li>Clean inspection posture (or transparent pre-inspection)</li>
+            <li>Consistent interior palette and lighting</li>
+            <li>Outdoor spaces staged as “rooms”</li>
+          </ul>
+          <p>If you’re buying, I’ll help you focus on what matters for resale value and long-term livability—not just what looks good online.</p>
+        `
+      },
+      {
+        slug: 'neighborhood-guide-old-fig-garden',
+        title: 'Neighborhood guide: Old Fig Garden',
+        date: '2026-02-21',
+        tags: ['Neighborhoods'],
+        excerpt: 'Character, canopy streets, and the kinds of details that don’t show up in listing descriptions.',
+        html: `
+          <p>Old Fig Garden is defined by its mature landscaping, architectural variety, and a sense of calm you can feel on an evening walk.</p>
+          <h3>What to look for</h3>
+          <ul>
+            <li>Lot orientation + natural light</li>
+            <li>How updates were done (period-respectful vs. overly trendy)</li>
+            <li>Traffic patterns during weekday rush</li>
+          </ul>
+          <p>Want a shortlist of homes with the right “bones”? Reach out with your must-haves and timeline.</p>
+        `
+      }
+    ];
+
+    // ---- Rendering + routing ----
+    const elPosts = document.getElementById('posts');
+    const viewList = document.getElementById('viewList');
+    const viewPost = document.getElementById('viewPost');
+    const elArticle = document.getElementById('article');
+    const backLink = document.getElementById('backLink');
+    const q = document.getElementById('q');
+    const tag = document.getElementById('tag');
+
+    function formatDate(iso){
+      try{
+        const d = new Date(iso + 'T00:00:00');
+        return d.toLocaleDateString(undefined, {year:'numeric', month:'long', day:'numeric'});
+      } catch { return iso; }
+    }
+
+    function uniqueTags(){
+      const set = new Set();
+      POSTS.forEach(p => (p.tags||[]).forEach(t => set.add(t)));
+      return Array.from(set).sort((a,b)=>a.localeCompare(b));
+    }
+
+    function renderTagOptions(){
+      uniqueTags().forEach(t => {
+        const opt = document.createElement('option');
+        opt.value = t;
+        opt.textContent = t;
+        tag.appendChild(opt);
+      });
+    }
+
+    function postCard(p){
+      const a = document.createElement('a');
+      a.href = `#/post/${p.slug}`;
+      a.setAttribute('data-cursor','link');
+      a.className = 'post';
+      a.innerHTML = `
+        <h2>${p.title}</h2>
+        <div class="meta">
+          <span>${formatDate(p.date)}</span>
+          <span>•</span>
+          <span>${(p.tags||[]).join(' / ')}</span>
+        </div>
+        <p class="excerpt">${p.excerpt || ''}</p>
+      `;
+      return a;
+    }
+
+    function renderList(){
+      const query = (q.value || '').trim().toLowerCase();
+      const t = tag.value;
+
+      const filtered = POSTS
+        .slice()
+        .sort((a,b)=> (b.date||'').localeCompare(a.date||''))
+        .filter(p => !t || (p.tags||[]).includes(t))
+        .filter(p => {
+          if(!query) return true;
+          const blob = `${p.title} ${p.excerpt} ${(p.tags||[]).join(' ')} ${p.html}`.toLowerCase();
+          return blob.includes(query);
+        });
+
+      elPosts.innerHTML = '';
+      if(filtered.length === 0){
+        const empty = document.createElement('div');
+        empty.style.color = 'var(--muted)';
+        empty.style.lineHeight = '1.8';
+        empty.textContent = 'No posts match that search yet.';
+        elPosts.appendChild(empty);
+        return;
+      }
+
+      filtered.forEach(p => elPosts.appendChild(postCard(p)));
+    }
+
+    function renderPost(slug){
+      const p = POSTS.find(x => x.slug === slug);
+      if(!p){
+        elArticle.innerHTML = `<h2>Post not found</h2><p class="byline">Try returning to the list.</p>`;
+      } else {
+        elArticle.innerHTML = `
+          <h2>${p.title}</h2>
+          <div class="byline">${formatDate(p.date)} • ${(p.tags||[]).join(' / ')}</div>
+          <div class="content">${p.html || ''}</div>
+        `;
+      }
+      viewList.hidden = true;
+      viewPost.hidden = false;
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+
+    function route(){
+      const h = location.hash || '';
+      const m = h.match(/^#\/post\/([a-z0-9\-]+)$/i);
+      if(m){
+        renderPost(m[1]);
+      } else {
+        viewPost.hidden = true;
+        viewList.hidden = false;
+        renderList();
+      }
+    }
+
+    backLink.addEventListener('click', (e)=>{
+      e.preventDefault();
+      location.hash = '';
+    });
+
+    q.addEventListener('input', renderList);
+    tag.addEventListener('change', renderList);
+
+    renderTagOptions();
+    route();
+    window.addEventListener('hashchange', route);
+
+    // Cursor
+    (function(){
+      const cursor = document.querySelector('.cursor');
+      const dot = document.querySelector('.cursor-dot');
+      if(!cursor || !dot) return;
+      let x = window.innerWidth/2, y = window.innerHeight/2;
+      let tx = x, ty = y;
+      const speed = 0.14;
+      function raf(){
+        tx += (x - tx) * speed;
+        ty += (y - ty) * speed;
+        cursor.style.transform = `translate(${tx}px, ${ty}px) translate(-50%, -50%)`;
+        dot.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%)`;
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
+      window.addEventListener('mousemove', (e)=>{ x=e.clientX; y=e.clientY; dot.style.opacity='1'; });
+      window.addEventListener('mouseleave', ()=>{ dot.style.opacity='0'; });
+    })();
+  </script>
+</body>
+</html>
