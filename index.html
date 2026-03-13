@@ -1,0 +1,1189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0f1113" />
+  <meta name="description" content="Linda Peltz — REALTOR® | eXp Realty. Top 5% of agents nationally serving Fresno, CA & the Central Valley." />
+  <title>Linda Peltz | Luxury Real Estate in Fresno & the Central Valley</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400,500,600,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --cream:#F5F1E9;
+      --cream-2:#EFE8DD;
+      --charcoal:#141617;
+      --charcoal-2:#0f1113;
+      --ink:#1a1c1d;
+      --muted:#6e6a63;
+      --muted-2:#8c877f;
+      --terracotta:#B5674A;
+      --terracotta-2:#d08b71;
+      --line:rgba(20,22,23,.16);
+      --lineOnDark:rgba(255,255,255,.14);
+      --shadow: 0 30px 80px rgba(0,0,0,.18);
+      --radius: 22px;
+      --max: 1120px;
+      --ease: cubic-bezier(.2,.8,.2,1);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Lato, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+      color:var(--ink);
+      background:linear-gradient(180deg,var(--cream) 0%, var(--cream-2) 55%, var(--cream) 100%);
+      letter-spacing:.2px;
+      overflow-x:hidden;
+    }
+
+    /* Custom cursor */
+    body{cursor:none;}
+    @media (hover:none), (pointer:coarse){
+      body{cursor:auto;}
+      .cursor, .cursor-dot{display:none!important;}
+    }
+    .cursor{
+      position:fixed;
+      left:0; top:0;
+      width:38px; height:38px;
+      border-radius:999px;
+      border:1px solid rgba(20,22,23,.25);
+      background:rgba(245,241,233,.08);
+      backdrop-filter: blur(10px);
+      transform: translate(-50%, -50%);
+      pointer-events:none;
+      z-index:10000;
+      transition: width 220ms var(--ease), height 220ms var(--ease), border-color 220ms var(--ease), background 220ms var(--ease), transform 140ms linear;
+      mix-blend-mode: multiply;
+    }
+    .cursor-dot{
+      position:fixed;
+      left:0; top:0;
+      width:6px; height:6px;
+      border-radius:999px;
+      background:rgba(181,103,74,.9);
+      transform: translate(-50%, -50%);
+      pointer-events:none;
+      z-index:10001;
+      transition: transform 110ms linear, opacity 180ms var(--ease);
+    }
+    .cursor.is-link{
+      width:54px; height:54px;
+      border-color: rgba(181,103,74,.55);
+      background: rgba(181,103,74,.10);
+    }
+
+    /* Global helpers */
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    .container{width: min(var(--max), calc(100% - 48px)); margin-inline:auto;}
+    .grid{display:grid; gap:22px}
+
+    /* Sticky nav */
+    .nav-wrap{
+      position:sticky;
+      top:0;
+      z-index:999;
+      background:rgba(245,241,233,.82);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid rgba(20,22,23,.08);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:16px 0;
+    }
+    .brand{
+      display:flex;
+      align-items:baseline;
+      gap:10px;
+    }
+    .brand .monogram{
+      font-family:"Bodoni Moda", serif;
+      font-weight:600;
+      font-size:20px;
+      letter-spacing:.6px;
+    }
+    .brand .meta{
+      font-size:12px;
+      color:var(--muted);
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+    .nav a{outline:none}
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      font-size:13px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:rgba(26,28,29,.86);
+    }
+    .nav-links a{
+      position:relative;
+      padding:10px 8px;
+      border-radius:999px;
+      transition: color 200ms var(--ease), background 200ms var(--ease);
+    }
+    .nav-links a:hover{
+      color:var(--charcoal);
+      background:rgba(20,22,23,.05);
+    }
+    .cta{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 16px;
+      border-radius:999px;
+      border:1px solid rgba(20,22,23,.14);
+      background:rgba(245,241,233,.65);
+      font-size:13px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      transition: transform 200ms var(--ease), background 200ms var(--ease), border-color 200ms var(--ease);
+    }
+    .btn:hover{transform: translateY(-1px); border-color: rgba(181,103,74,.55);}
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(181,103,74,.95), rgba(208,139,113,.88));
+      color: #fff;
+      border-color: rgba(181,103,74,.5);
+      box-shadow: 0 20px 45px rgba(181,103,74,.18);
+    }
+    .btn.primary:hover{transform: translateY(-2px)}
+
+    /* Mobile nav */
+    .menu-btn{display:none}
+    .mobile-panel{display:none}
+    @media (max-width: 920px){
+      .nav-links{display:none}
+      .menu-btn{display:inline-flex}
+      .mobile-panel{
+        display:block;
+        max-height:0;
+        overflow:hidden;
+        transition: max-height 350ms var(--ease);
+        border-top:1px solid rgba(20,22,23,.08);
+      }
+      .mobile-panel .inner{padding:12px 0 18px 0; display:grid; gap:10px}
+      .mobile-panel a{
+        padding:12px 10px;
+        border-radius:14px;
+        background:rgba(20,22,23,.04);
+        font-size:13px;
+        letter-spacing:.12em;
+        text-transform:uppercase;
+      }
+      .mobile-panel a:hover{background:rgba(20,22,23,.06)}
+      .mobile-panel.is-open{max-height: 420px;}
+    }
+
+    /* Hero */
+    .hero{
+      position:relative;
+      background: radial-gradient(1200px 700px at 20% 10%, rgba(181,103,74,.18), transparent 55%),
+                  radial-gradient(900px 600px at 80% 20%, rgba(208,139,113,.10), transparent 60%),
+                  linear-gradient(180deg, var(--charcoal-2), var(--charcoal));
+      color:var(--cream);
+      overflow:hidden;
+      border-bottom: 1px solid var(--lineOnDark);
+    }
+
+    /* subtle grain overlay */
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image: url('data:image/svg+xml;utf8,\
+        <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160">\
+          <filter id="n">\
+            <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>\
+            <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.35 0"/>\
+          </filter>\
+          <rect width="160" height="160" filter="url(%23n)" opacity="0.35"/>\
+        </svg>');
+      mix-blend-mode: overlay;
+      opacity:.22;
+      pointer-events:none;
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      left:-20%;
+      top:-10%;
+      width:140%;
+      height:140%;
+      background: radial-gradient(800px 500px at 50% 30%, rgba(245,241,233,.05), transparent 60%);
+      pointer-events:none;
+      transform: rotate(-6deg);
+      opacity:.9;
+    }
+
+    .hero-inner{
+      position:relative;
+      padding: 92px 0 72px 0;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:44px;
+      align-items:end;
+    }
+
+    @media (max-width: 980px){
+      .hero-inner{padding: 78px 0 58px 0;}
+      .hero-grid{grid-template-columns:1fr; align-items:start;}
+    }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:999px;
+      background: rgba(15,17,19,.35);
+      backdrop-filter: blur(10px);
+      color: rgba(245,241,233,.88);
+      font-size:12px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+    .kicker .dot{width:6px; height:6px; border-radius:99px; background: var(--terracotta); box-shadow: 0 0 0 6px rgba(181,103,74,.16)}
+
+    .hero h1{
+      margin:18px 0 0 0;
+      font-family: "Bodoni Moda", serif;
+      font-weight: 600;
+      line-height: .95;
+      letter-spacing: .02em;
+      font-size: clamp(44px, 6vw, 76px);
+    }
+    .stagger{
+      display:block;
+    }
+    .stagger:nth-child(1){transform: translateX(-2px)}
+    .stagger:nth-child(2){transform: translateX(14px)}
+
+    .tagline{
+      margin: 18px 0 0 0;
+      max-width: 50ch;
+      font-size: 16px;
+      color: rgba(245,241,233,.82);
+      line-height: 1.7;
+    }
+
+    .hero-actions{margin-top: 26px; display:flex; gap:12px; flex-wrap:wrap}
+
+    .hero-card{
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: var(--radius);
+      padding: 22px;
+      background: rgba(15,17,19,.36);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 28px 70px rgba(0,0,0,.25);
+    }
+    .hero-card .label{
+      font-size:12px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color: rgba(245,241,233,.74);
+    }
+    .hero-card .value{
+      margin-top:10px;
+      font-family:"Bodoni Moda", serif;
+      font-size: 26px;
+      line-height:1.12;
+    }
+    .hero-card .sub{
+      margin-top:10px;
+      color: rgba(245,241,233,.74);
+      font-size: 14px;
+      line-height:1.6;
+    }
+    .hero-stats{
+      margin-top:18px;
+      padding-top:18px;
+      border-top: 1px solid rgba(255,255,255,.12);
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+    }
+    .stat{padding:14px; border-radius:16px; background: rgba(245,241,233,.06); border:1px solid rgba(255,255,255,.10)}
+    .stat .n{font-family:"Bodoni Moda", serif; font-size: 22px;}
+    .stat .t{margin-top:4px; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color: rgba(245,241,233,.70)}
+
+    /* Sections */
+    section{padding: 84px 0;}
+    @media (max-width: 700px){section{padding: 64px 0;}}
+
+    .section-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:18px;
+      margin-bottom: 22px;
+    }
+    .section-head h2{
+      margin:0;
+      font-family:"Bodoni Moda", serif;
+      font-weight:600;
+      font-size: clamp(28px, 3.4vw, 44px);
+      line-height:1.05;
+      letter-spacing:.01em;
+    }
+    .section-head p{
+      margin:0;
+      color: var(--muted);
+      max-width: 54ch;
+      line-height:1.7;
+      font-size: 14px;
+    }
+
+    .card{
+      border:1px solid rgba(20,22,23,.10);
+      border-radius: var(--radius);
+      background: rgba(245,241,233,.70);
+      box-shadow: 0 24px 70px rgba(20,22,23,.08);
+    }
+    .card.pad{padding:24px;}
+
+    /* About */
+    .about-grid{grid-template-columns: 1fr 1fr; align-items:start}
+    @media (max-width: 980px){.about-grid{grid-template-columns:1fr}}
+
+    .bio{
+      font-size: 16px;
+      line-height: 1.85;
+      color: rgba(26,28,29,.92);
+    }
+    .bio strong{font-weight:700; color: var(--charcoal)}
+
+    .signature{
+      margin-top: 18px;
+      display:flex;
+      gap:14px;
+      align-items:center;
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(181,103,74,.10), rgba(181,103,74,.02));
+      border: 1px solid rgba(181,103,74,.24);
+    }
+    .seal{
+      width:44px; height:44px;
+      border-radius: 999px;
+      display:grid; place-items:center;
+      background: rgba(20,22,23,.07);
+      border: 1px solid rgba(20,22,23,.16);
+      font-family:"Bodoni Moda", serif;
+      font-weight:600;
+    }
+    .signature .small{font-size: 13px; color: var(--muted); line-height:1.5}
+
+    .about-aside .pill{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:14px 16px;
+      border-radius: 16px;
+      background: rgba(20,22,23,.03);
+      border: 1px solid rgba(20,22,23,.08);
+      margin-bottom: 12px;
+    }
+    .pill .k{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color: var(--muted)}
+    .pill .v{font-weight:700; color: var(--charcoal)}
+
+    /* Listings */
+    .listings-grid{grid-template-columns: 1.15fr .85fr; align-items:start}
+    @media (max-width: 980px){.listings-grid{grid-template-columns:1fr}}
+
+    .listing{
+      display:grid;
+      grid-template-columns: 140px 1fr;
+      gap: 18px;
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(20,22,23,.03);
+      border: 1px solid rgba(20,22,23,.08);
+    }
+    @media (max-width: 640px){
+      .listing{grid-template-columns:1fr}
+    }
+    .thumb{
+      border-radius: 16px;
+      min-height: 110px;
+      background:
+        radial-gradient(900px 300px at 40% 30%, rgba(181,103,74,.16), transparent 55%),
+        linear-gradient(135deg, rgba(20,22,23,.18), rgba(20,22,23,.04));
+      border: 1px solid rgba(20,22,23,.10);
+      position:relative;
+      overflow:hidden;
+    }
+    .thumb::after{
+      content:"Listing photo";
+      position:absolute;
+      bottom:10px; left:12px;
+      font-size: 12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color: rgba(26,28,29,.62);
+    }
+    .listing h3{
+      margin: 2px 0 6px 0;
+      font-family:"Bodoni Moda", serif;
+      font-weight:600;
+      letter-spacing:.01em;
+      font-size: 22px;
+    }
+    .meta-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 10px;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(20,22,23,.10);
+      background: rgba(245,241,233,.65);
+      font-size: 12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color: rgba(26,28,29,.78);
+    }
+    .chip .dot{width:6px; height:6px; border-radius:99px; background: var(--terracotta)}
+
+    .aside-box{
+      padding: 22px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(20,22,23,.10);
+      background: linear-gradient(135deg, rgba(245,241,233,.76), rgba(245,241,233,.60));
+    }
+    .aside-box h4{margin:0; font-family:"Bodoni Moda", serif; font-size: 22px; font-weight:600}
+    .aside-box p{margin:12px 0 0 0; color: var(--muted); line-height:1.75; font-size:14px}
+
+    /* Testimonials */
+    .test-grid{grid-template-columns: repeat(3, 1fr)}
+    @media (max-width: 980px){.test-grid{grid-template-columns:1fr;}}
+
+    blockquote{
+      margin:0;
+      padding: 22px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(20,22,23,.10);
+      background: rgba(245,241,233,.72);
+      box-shadow: 0 24px 70px rgba(20,22,23,.06);
+      position:relative;
+      overflow:hidden;
+    }
+    blockquote::before{
+      content:"“";
+      position:absolute;
+      top:-18px; left:14px;
+      font-family:"Bodoni Moda", serif;
+      font-size: 120px;
+      color: rgba(181,103,74,.18);
+      line-height:1;
+    }
+    blockquote p{margin: 22px 0 0 0; color: rgba(26,28,29,.92); line-height:1.85; font-size: 15px}
+    blockquote footer{margin-top: 16px; color: var(--muted); font-size: 12px; letter-spacing:.14em; text-transform:uppercase}
+
+    /* Neighborhoods */
+    .hoods-grid{grid-template-columns: 1fr 1fr; align-items:stretch}
+    @media (max-width: 980px){.hoods-grid{grid-template-columns:1fr}}
+
+    .hoods{
+      padding: 24px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(20,22,23,.10);
+      background: rgba(245,241,233,.70);
+      box-shadow: 0 24px 70px rgba(20,22,23,.06);
+    }
+    .hoods ul{margin: 14px 0 0 0; padding:0; list-style:none; display:grid; gap:10px}
+    .hoods li{
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(20,22,23,.08);
+      background: rgba(20,22,23,.03);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+    }
+    .hoods li span{font-weight:700}
+    .hoods li em{font-style:normal; color: var(--muted); font-size: 12px; letter-spacing:.12em; text-transform:uppercase}
+
+    /* Contact */
+    .contact-grid{grid-template-columns: 1fr 1fr; align-items:start}
+    @media (max-width: 980px){.contact-grid{grid-template-columns:1fr}}
+
+    form{
+      display:grid;
+      gap:12px;
+      margin-top: 4px;
+    }
+    label{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color: var(--muted)}
+    input, textarea{
+      width:100%;
+      padding: 14px 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(20,22,23,.12);
+      background: rgba(245,241,233,.84);
+      font: inherit;
+      color: var(--charcoal);
+      outline:none;
+      transition: border-color 180ms var(--ease), box-shadow 180ms var(--ease), transform 180ms var(--ease);
+    }
+    textarea{min-height: 120px; resize: vertical}
+    input:focus, textarea:focus{
+      border-color: rgba(181,103,74,.55);
+      box-shadow: 0 0 0 5px rgba(181,103,74,.12);
+      transform: translateY(-1px);
+    }
+    .fineprint{margin-top: 10px; color: var(--muted); font-size: 13px; line-height:1.7}
+
+    .contact-card{
+      padding: 24px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(20,22,23,.10);
+      background: linear-gradient(135deg, rgba(20,22,23,.92), rgba(20,22,23,.82));
+      color: var(--cream);
+      position:relative;
+      overflow:hidden;
+    }
+    .contact-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: radial-gradient(700px 360px at 20% 20%, rgba(181,103,74,.22), transparent 58%),
+                  radial-gradient(700px 360px at 85% 35%, rgba(208,139,113,.12), transparent 55%);
+      opacity: .95;
+      pointer-events:none;
+    }
+    .contact-card > *{position:relative}
+    .contact-card h3{margin:0; font-family:"Bodoni Moda", serif; font-weight:600; font-size: 26px; line-height:1.15}
+    .contact-card .row{margin-top: 14px; display:grid; gap:10px}
+    .contact-link{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding: 14px 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(15,17,19,.35);
+      transition: transform 200ms var(--ease), border-color 200ms var(--ease);
+    }
+    .contact-link:hover{transform: translateY(-1px); border-color: rgba(181,103,74,.55)}
+    .contact-link .k{font-size:12px; letter-spacing:.14em; text-transform:uppercase; color: rgba(245,241,233,.74)}
+    .contact-link .v{font-weight:700}
+
+    /* Footer */
+    footer{
+      padding: 40px 0 54px 0;
+      border-top:1px solid rgba(20,22,23,.08);
+      color: var(--muted);
+      font-size: 13px;
+      line-height:1.8;
+    }
+    .foot{
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+    .foot .mini{max-width: 70ch}
+    .sep{opacity:.55}
+
+    /* Scroll reveal */
+    .reveal{opacity:0; transform: translateY(16px); transition: opacity 700ms var(--ease), transform 700ms var(--ease);}
+    .reveal.is-in{opacity:1; transform: translateY(0);}
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      *{scroll-behavior:auto!important}
+      .reveal{opacity:1!important; transform:none!important; transition:none!important}
+      .cursor,.cursor-dot{display:none!important}
+    }
+
+    /* Anchor offset for sticky nav */
+    [id]{scroll-margin-top: 84px;}
+
+    /* Tiny accent rule */
+    .rule{
+      height:1px;
+      width:100%;
+      background: linear-gradient(90deg, rgba(181,103,74,.0), rgba(181,103,74,.55), rgba(181,103,74,.0));
+      opacity:.8;
+      margin: 18px 0 0 0;
+    }
+
+    /* Accessibility */
+    .sr-only{
+      position:absolute;
+      width:1px;height:1px;
+      padding:0;margin:-1px;
+      overflow:hidden;clip:rect(0,0,0,0);
+      white-space:nowrap;border:0;
+    }
+
+    /* Small decorative scroll hint */
+    .scroll-hint{
+      margin-top: 32px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color: rgba(245,241,233,.68);
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+    .scroll-hint .line{
+      width: 56px;
+      height:1px;
+      background: rgba(245,241,233,.22);
+      position:relative;
+      overflow:hidden;
+    }
+    .scroll-hint .line::after{
+      content:"";
+      position:absolute;
+      left:-24px; top:0;
+      width:24px; height:1px;
+      background: rgba(181,103,74,.9);
+      animation: sweep 1.8s var(--ease) infinite;
+    }
+    @keyframes sweep{to{left:100%;}}
+  </style>
+</head>
+<body>
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+
+  <header class="nav-wrap" role="banner">
+    <div class="container">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="#top">
+          <span class="monogram">Linda Peltz</span>
+          <span class="meta">REALTOR® | eXp Realty</span>
+        </a>
+
+        <div class="nav-links" role="navigation">
+          <a href="#about">About</a>
+          <a href="#listings">Featured</a>
+          <a href="#testimonials">Testimonials</a>
+          <a href="#neighborhoods">Neighborhoods</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <div class="cta">
+          <a class="btn" href="#contact" data-cursor="link">Inquire</a>
+          <button class="btn primary menu-btn" type="button" id="menuBtn" aria-expanded="false" aria-controls="mobilePanel" data-cursor="link">
+            Menu
+          </button>
+          <a class="btn primary" href="#contact" data-cursor="link" id="desktopCta">Request a Private Showing</a>
+        </div>
+      </nav>
+
+      <div class="mobile-panel" id="mobilePanel" hidden>
+        <div class="inner">
+          <a href="#about" data-cursor="link">About</a>
+          <a href="#listings" data-cursor="link">Featured Listings</a>
+          <a href="#testimonials" data-cursor="link">Client Testimonials</a>
+          <a href="#neighborhoods" data-cursor="link">Neighborhoods</a>
+          <a href="#contact" data-cursor="link">Contact</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-label="Hero">
+      <div class="container">
+        <div class="hero-inner">
+          <div class="hero-grid">
+            <div>
+              <div class="kicker reveal">
+                <span class="dot" aria-hidden="true"></span>
+                <span>Fresno, CA & Central Valley</span>
+                <span class="sep" aria-hidden="true">•</span>
+                <span>Top 5% nationally</span>
+              </div>
+
+              <h1 class="reveal" style="transition-delay:90ms">
+                <span class="stagger">Linda</span>
+                <span class="stagger">Peltz</span>
+              </h1>
+
+              <p class="tagline reveal" style="transition-delay:160ms">
+                <span style="color:rgba(245,241,233,.92)">“Your home. Your legacy. Your Central Valley.”</span>
+                <br />Warm, discreet representation for buyers and sellers who value design, privacy, and long-term equity.
+              </p>
+
+              <div class="hero-actions reveal" style="transition-delay:230ms">
+                <a class="btn primary" href="#contact" data-cursor="link">Start a Conversation</a>
+                <a class="btn" href="#listings" data-cursor="link">View Featured Homes</a>
+              </div>
+
+              <div class="scroll-hint reveal" style="transition-delay:300ms" aria-hidden="true">
+                <span class="line"></span>
+                <span>Scroll</span>
+              </div>
+            </div>
+
+            <aside class="hero-card reveal" style="transition-delay:180ms">
+              <div class="label">Signature Approach</div>
+              <div class="value">Editorial-level marketing,<br/>white-glove guidance.</div>
+              <div class="sub">
+                From pricing strategy to negotiation, every detail is treated as part of a larger story—yours.
+              </div>
+              <div class="hero-stats">
+                <div class="stat">
+                  <div class="n">Top 5%</div>
+                  <div class="t">National Ranking</div>
+                </div>
+                <div class="stat">
+                  <div class="n">Central Valley</div>
+                  <div class="t">Local Expertise</div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" aria-label="About">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <h2>Quiet confidence.<br/>Measured results.</h2>
+            <div class="rule" aria-hidden="true"></div>
+          </div>
+          <p>
+            Luxury isn’t loud. It’s clarity, curation, and a process that feels composed from day one.
+          </p>
+        </div>
+
+        <div class="grid about-grid">
+          <div class="card pad reveal">
+            <p class="bio">
+              I’m <strong>Linda Peltz</strong>, a <strong>REALTOR® with eXp Realty</strong>, serving <strong>Fresno, CA</strong> and the broader <strong>Central Valley</strong>.
+              My work is built on thoughtful preparation, clear communication, and a refined marketing standard—because in high-value transactions,
+              details aren’t extra. They’re the difference.
+              <br/><br/>
+              Whether you’re listing a legacy property, relocating, or searching for the right long-term investment, I’ll help you move with intention.
+              Expect steady guidance, honest strategy, and a calm advocate in every negotiation.
+            </p>
+
+            <div class="signature" role="note" aria-label="Accolade">
+              <div class="seal" aria-hidden="true">LP</div>
+              <div>
+                <div style="font-weight:700">Top 5% of agents nationally</div>
+                <div class="small">Trusted representation with a luxury editorial sensibility.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-aside reveal">
+            <div class="pill"><span class="k">Title</span><span class="v">REALTOR® | eXp Realty</span></div>
+            <div class="pill"><span class="k">Location</span><span class="v">Fresno, CA & Central Valley</span></div>
+            <div class="pill"><span class="k">Specialties</span><span class="v">Luxury • Relocation • Investment</span></div>
+            <div class="pill"><span class="k">Style</span><span class="v">Calm • Strategic • Discreet</span></div>
+
+            <div class="card pad" style="margin-top:14px">
+              <div style="font-family:'Bodoni Moda',serif; font-weight:600; font-size:22px; line-height:1.2">A better experience is built before the first showing.</div>
+              <p style="margin:12px 0 0 0; color:var(--muted); line-height:1.8; font-size:14px">
+                Pre-listing planning, elevated presentation, and intentional follow-through—so your transaction feels effortless, even when it’s complex.
+              </p>
+              <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap">
+                <a class="btn" href="#contact" data-cursor="link">Request a consult</a>
+                <a class="btn" href="#neighborhoods" data-cursor="link">Explore areas</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="listings" aria-label="Featured Listings">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <h2>Featured listings</h2>
+            <div class="rule" aria-hidden="true"></div>
+          </div>
+          <p>
+            Placeholder section ready for MLS embeds, listing cards, or a direct feed. Swap in real properties anytime.
+          </p>
+        </div>
+
+        <div class="grid listings-grid">
+          <div class="card pad reveal">
+            <div class="listing" style="margin-bottom:14px">
+              <div class="thumb" aria-hidden="true"></div>
+              <div>
+                <h3>Signature Property — Placeholder</h3>
+                <div style="color:var(--muted); line-height:1.7; font-size:14px">
+                  A short narrative description goes here: architectural highlights, lifestyle benefits, and a single compelling detail.
+                </div>
+                <div class="meta-row" aria-label="Listing details">
+                  <span class="chip"><span class="dot" aria-hidden="true"></span>Fresno</span>
+                  <span class="chip"><span class="dot" aria-hidden="true"></span>4 Bed</span>
+                  <span class="chip"><span class="dot" aria-hidden="true"></span>3 Bath</span>
+                  <span class="chip"><span class="dot" aria-hidden="true"></span>— Sq Ft</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="listing">
+              <div class="thumb" aria-hidden="true"></div>
+              <div>
+                <h3>Private Estate — Placeholder</h3>
+                <div style="color:var(--muted); line-height:1.7; font-size:14px">
+                  Add pricing, a virtual tour link, and a call-to-action for private showings. Designed to feel editorial, not salesy.
+                </div>
+                <div class="meta-row" aria-label="Listing details">
+                  <span class="chip"><span class="dot" aria-hidden="true"></span>Clovis</span>
+                  <span class="chip"><span class="dot" aria-hidden="true"></span>Pool</span>
+                  <span class="chip"><span class="dot" aria-hidden="true"></span>Gated</span>
+                  <span class="chip"><span class="dot" aria-hidden="true"></span>New</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap">
+              <a class="btn primary" href="#contact" data-cursor="link">Request current inventory</a>
+              <a class="btn" href="#contact" data-cursor="link">Sell with Linda</a>
+            </div>
+          </div>
+
+          <aside class="aside-box reveal">
+            <h4>Ready for MLS integration</h4>
+            <p>
+              This section is structured for a quick upgrade:
+              embed IDX/MLS widgets, connect a listing API, or replace placeholders with real property media.
+            </p>
+            <p>
+              Want it to feel more Architectural Digest? Add one cinematic listing video per property and keep the copy minimal.
+            </p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials" aria-label="Testimonials">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <h2>Client testimonials</h2>
+            <div class="rule" aria-hidden="true"></div>
+          </div>
+          <p>
+            Replace these with verified reviews later (Google, Zillow, brokerage profiles). The layout is tuned for elegant, readable quotes.
+          </p>
+        </div>
+
+        <div class="grid test-grid">
+          <blockquote class="reveal">
+            <p>
+              Linda made the entire process feel calm and intentional. We always knew what came next, and her advice was exactly what we needed.
+            </p>
+            <footer>— Client, Fresno</footer>
+          </blockquote>
+
+          <blockquote class="reveal" style="transition-delay:90ms">
+            <p>
+              Strategic, responsive, and incredibly professional. The marketing presentation alone felt like something out of a magazine.
+            </p>
+            <footer>— Seller, Central Valley</footer>
+          </blockquote>
+
+          <blockquote class="reveal" style="transition-delay:160ms">
+            <p>
+              We had a complex timeline. Linda negotiated with confidence, protected our priorities, and made it look effortless.
+            </p>
+            <footer>— Buyer, Clovis</footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section id="neighborhoods" aria-label="Neighborhoods">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <h2>Neighborhoods served</h2>
+            <div class="rule" aria-hidden="true"></div>
+          </div>
+          <p>
+            Focused expertise across Fresno and the Central Valley—tailored for lifestyle, schools, commutes, and long-term value.
+          </p>
+        </div>
+
+        <div class="grid hoods-grid">
+          <div class="hoods reveal">
+            <div style="font-family:'Bodoni Moda',serif; font-weight:600; font-size:22px; line-height:1.2">Fresno & Clovis</div>
+            <ul>
+              <li><span>Old Fig Garden</span><em>Classic character</em></li>
+              <li><span>Van Ness Extension</span><em>Luxury corridors</em></li>
+              <li><span>North Fresno</span><em>Modern convenience</em></li>
+              <li><span>Clovis</span><em>Community + schools</em></li>
+            </ul>
+          </div>
+
+          <div class="hoods reveal" style="transition-delay:90ms">
+            <div style="font-family:'Bodoni Moda',serif; font-weight:600; font-size:22px; line-height:1.2">Central Valley</div>
+            <ul>
+              <li><span>Madera</span><em>Space + privacy</em></li>
+              <li><span>Sanger</span><em>Small-town charm</em></li>
+              <li><span>Visalia</span><em>Growing demand</em></li>
+              <li><span>Custom search</span><em>Tell me your goals</em></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" aria-label="Contact">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <h2>Let’s talk.</h2>
+            <div class="rule" aria-hidden="true"></div>
+          </div>
+          <p>
+            Share a few details and I’ll reply with next steps—private, prompt, and pressure-free.
+          </p>
+        </div>
+
+        <div class="grid contact-grid">
+          <div class="card pad reveal">
+            <form id="contactForm" novalidate>
+              <div>
+                <label for="name">Name</label>
+                <input id="name" name="name" autocomplete="name" required />
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" required />
+              </div>
+              <div>
+                <label for="phone">Phone</label>
+                <input id="phone" name="phone" autocomplete="tel" />
+              </div>
+              <div>
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required placeholder="Tell me what you’re looking for (timeline, budget range, neighborhood preferences)…"></textarea>
+              </div>
+
+              <button class="btn primary" type="submit" data-cursor="link">Send message</button>
+
+              <p class="fineprint" id="formNote">
+                This form is currently configured for a simple mailto fallback (no data is stored). For production lead capture,
+                connect it to a serverless form handler (Cloudflare Pages Functions, Formspree, Basin, etc.).
+              </p>
+            </form>
+          </div>
+
+          <aside class="contact-card reveal" style="transition-delay:90ms">
+            <h3>Private inquiries</h3>
+            <div class="row" aria-label="Contact details">
+              <a class="contact-link" href="tel:+1" data-cursor="link">
+                <div>
+                  <div class="k">Phone</div>
+                  <div class="v">(placeholder)</div>
+                </div>
+                <div style="opacity:.7">↗</div>
+              </a>
+              <a class="contact-link" href="mailto:" data-cursor="link">
+                <div>
+                  <div class="k">Email</div>
+                  <div class="v">(placeholder)</div>
+                </div>
+                <div style="opacity:.7">↗</div>
+              </a>
+              <div class="contact-link" role="note">
+                <div>
+                  <div class="k">Office</div>
+                  <div class="v">eXp Realty</div>
+                </div>
+                <div style="opacity:.7">—</div>
+              </div>
+            </div>
+
+            <p style="margin:16px 0 0 0; color:rgba(245,241,233,.78); line-height:1.8; font-size:14px">
+              Prefer text? Include your best contact method and ideal times.
+              For listings: I’m happy to provide a tailored pricing and presentation plan.
+            </p>
+
+            <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap">
+              <a class="btn" href="#about" data-cursor="link" style="border-color:rgba(255,255,255,.16); background: rgba(15,17,19,.25); color: var(--cream)">About Linda</a>
+              <a class="btn" href="#listings" data-cursor="link" style="border-color:rgba(255,255,255,.16); background: rgba(15,17,19,.25); color: var(--cream)">Featured Homes</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="container">
+      <div class="foot">
+        <div class="mini">
+          <div style="font-family:'Bodoni Moda',serif; font-weight:600; color:var(--charcoal)">Linda Peltz</div>
+          <div>REALTOR® | eXp Realty • Fresno, CA & Central Valley • Top 5% nationally</div>
+          <div style="margin-top:10px">
+            <span class="sep">©</span> <span id="year"></span> Linda Peltz. All rights reserved.
+          </div>
+        </div>
+        <div>
+          <div>Fair Housing Opportunity.</div>
+          <div class="sep">Site: single-file demo build.</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu
+    (function(){
+      const btn = document.getElementById('menuBtn');
+      const panel = document.getElementById('mobilePanel');
+      const desktopCta = document.getElementById('desktopCta');
+
+      const mq = window.matchMedia('(max-width: 920px)');
+      function syncCTA(){
+        if(mq.matches){ desktopCta.style.display = 'none'; panel.hidden = false; }
+        else { desktopCta.style.display = 'inline-flex'; panel.hidden = true; panel.classList.remove('is-open'); btn?.setAttribute('aria-expanded','false'); }
+      }
+      syncCTA();
+      mq.addEventListener?.('change', syncCTA);
+
+      btn?.addEventListener('click', () => {
+        const open = panel.classList.toggle('is-open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+
+      panel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        panel.classList.remove('is-open');
+        btn.setAttribute('aria-expanded','false');
+      }));
+    })();
+
+    // Smooth anchor scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const href = a.getAttribute('href');
+        if(!href || href === '#') return;
+        const el = document.querySelector(href);
+        if(!el) return;
+        e.preventDefault();
+        el.scrollIntoView({behavior:'smooth', block:'start'});
+        history.pushState(null,'',href);
+      });
+    });
+
+    // Scroll reveal
+    (function(){
+      const els = Array.from(document.querySelectorAll('.reveal'));
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(en=>{
+          if(en.isIntersecting){
+            en.target.classList.add('is-in');
+            io.unobserve(en.target);
+          }
+        });
+      }, {threshold: 0.14, rootMargin: '0px 0px -10% 0px'});
+      els.forEach(el=>io.observe(el));
+    })();
+
+    // Custom cursor
+    (function(){
+      const cursor = document.querySelector('.cursor');
+      const dot = document.querySelector('.cursor-dot');
+      if(!cursor || !dot) return;
+
+      let x = window.innerWidth/2, y = window.innerHeight/2;
+      let tx = x, ty = y;
+      const speed = 0.14;
+
+      function raf(){
+        tx += (x - tx) * speed;
+        ty += (y - ty) * speed;
+        cursor.style.transform = `translate(${tx}px, ${ty}px) translate(-50%, -50%)`;
+        dot.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%)`;
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
+
+      window.addEventListener('mousemove', (e)=>{ x=e.clientX; y=e.clientY; dot.style.opacity = '1'; });
+      window.addEventListener('mouseleave', ()=>{ dot.style.opacity = '0'; });
+
+      const linkSelector = 'a, button, input, textarea, [data-cursor="link"]';
+      document.addEventListener('mouseover', (e)=>{
+        const t = e.target;
+        if(t && t.closest && t.closest(linkSelector)) cursor.classList.add('is-link');
+      });
+      document.addEventListener('mouseout', (e)=>{
+        const t = e.target;
+        if(t && t.closest && t.closest(linkSelector)) cursor.classList.remove('is-link');
+      });
+    })();
+
+    // Contact form (mailto fallback)
+    (function(){
+      const form = document.getElementById('contactForm');
+      const note = document.getElementById('formNote');
+      if(!form) return;
+
+      form.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        const name = (form.name?.value || '').trim();
+        const email = (form.email?.value || '').trim();
+        const phone = (form.phone?.value || '').trim();
+        const message = (form.message?.value || '').trim();
+
+        if(!name || !email || !message){
+          note.textContent = 'Please complete name, email, and message.';
+          note.style.color = 'rgba(181,103,74,.95)';
+          return;
+        }
+
+        const subject = encodeURIComponent('Website inquiry — Linda Peltz');
+        const body = encodeURIComponent(
+          `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${message}\n\n— Sent from lindapeltzrealtor.dev (contact form)`
+        );
+
+        // Placeholder email; update when real address is available.
+        window.location.href = `mailto:?subject=${subject}&body=${body}`;
+
+        note.textContent = 'Opening your email app to send the message…';
+        note.style.color = 'rgba(110,106,99,1)';
+        form.reset();
+      });
+    })();
+  </script>
+</body>
+</html>
