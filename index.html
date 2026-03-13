@@ -299,6 +299,43 @@
       backdrop-filter: blur(12px);
       box-shadow: 0 28px 70px rgba(0,0,0,.25);
     }
+
+    .hero-media{
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: calc(var(--radius) + 8px);
+      background: rgba(15,17,19,.28);
+      overflow:hidden;
+      box-shadow: 0 28px 70px rgba(0,0,0,.28);
+    }
+    .hero-media .frame{
+      aspect-ratio: 4 / 5;
+      width: 100%;
+      position:relative;
+      background:
+        radial-gradient(900px 420px at 40% 30%, rgba(181,103,74,.26), transparent 58%),
+        linear-gradient(135deg, rgba(245,241,233,.10), rgba(245,241,233,.02));
+    }
+    .hero-media img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      filter: contrast(1.03) saturate(0.98);
+    }
+    .hero-media .caption{
+      padding: 14px 16px;
+      border-top: 1px solid rgba(255,255,255,.12);
+      color: rgba(245,241,233,.74);
+      font-size: 12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .hero-media .caption b{color: rgba(245,241,233,.92)}
+
     .hero-card .label{
       font-size:12px;
       letter-spacing:.16em;
@@ -750,23 +787,69 @@
               </div>
             </div>
 
-            <aside class="hero-card reveal" style="transition-delay:180ms">
-              <div class="label">Signature Approach</div>
-              <div class="value">Editorial-level marketing,<br/>white-glove guidance.</div>
-              <div class="sub">
-                From pricing strategy to negotiation, every detail is treated as part of a larger story—yours.
-              </div>
-              <div class="hero-stats">
-                <div class="stat">
-                  <div class="n">Top 5%</div>
-                  <div class="t">National Ranking</div>
+            <aside class="reveal" style="transition-delay:180ms; display:grid; gap:14px">
+              <div class="hero-media" aria-label="Portrait">
+                <div class="frame">
+                  <!-- Replace the placeholder src with Linda's real headshot URL (or a local file in the repo). -->
+                  <img
+                    src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='800' height='1000'><defs><linearGradient id='g' x1='0' x2='1' y1='0' y2='1'><stop offset='0' stop-color='%23141617' stop-opacity='0.35'/><stop offset='1' stop-color='%23B5674A' stop-opacity='0.25'/></linearGradient></defs><rect width='100%25' height='100%25' fill='url(%23g)'/><circle cx='400' cy='390' r='140' fill='%23F5F1E9' fill-opacity='0.10'/><rect x='190' y='530' width='420' height='360' rx='190' fill='%23F5F1E9' fill-opacity='0.09'/><text x='50%25' y='90%25' text-anchor='middle' fill='%23F5F1E9' fill-opacity='0.55' font-family='Lato, Arial' font-size='22' letter-spacing='3'>ADD HEADSHOT</text></svg>"
+                    alt="Linda Peltz portrait"
+                    loading="eager"
+                    decoding="async"
+                  />
                 </div>
-                <div class="stat">
-                  <div class="n">Central Valley</div>
-                  <div class="t">Local Expertise</div>
+                <div class="caption"><span><b>Linda Peltz</b> • REALTOR®</span><span style="opacity:.8">eXp Realty</span></div>
+              </div>
+
+              <div class="hero-card">
+                <div class="label">Signature Approach</div>
+                <div class="value">Editorial-level marketing,<br/>white-glove guidance.</div>
+                <div class="sub">
+                  From pricing strategy to negotiation, every detail is treated as part of a larger story—yours.
+                </div>
+                <div class="hero-stats">
+                  <div class="stat">
+                    <div class="n">Top 5%</div>
+                    <div class="t">National Ranking</div>
+                  </div>
+                  <div class="stat">
+                    <div class="n">Central Valley</div>
+                    <div class="t">Local Expertise</div>
+                  </div>
                 </div>
               </div>
             </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="Image gallery" style="padding: 44px 0; background: rgba(245,241,233,.55); border-bottom:1px solid rgba(20,22,23,.08)">
+      <div class="container">
+        <div class="grid" style="grid-template-columns: 1.1fr .9fr .9fr; gap:14px">
+          <div class="card" style="overflow:hidden; border-radius: calc(var(--radius) + 8px)">
+            <div style="aspect-ratio: 16/10; background: radial-gradient(900px 360px at 30% 30%, rgba(181,103,74,.22), transparent 60%), linear-gradient(135deg, rgba(20,22,23,.14), rgba(20,22,23,.02)); position:relative">
+              <img alt="Central Valley luxury home (placeholder)" loading="lazy" decoding="async"
+                src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='750'><rect width='100%25' height='100%25' fill='%23EFE8DD'/><rect x='60' y='70' width='1080' height='610' rx='34' fill='%23141617' fill-opacity='0.08'/><path d='M190 520 L420 330 L560 430 L770 250 L1010 520 Z' fill='%23B5674A' fill-opacity='0.25'/><text x='50%25' y='54%25' text-anchor='middle' fill='%23141617' fill-opacity='0.45' font-family='Lato, Arial' font-size='28' letter-spacing='3'>FEATURE IMAGE</text></svg>"/>
+              <div style="position:absolute; inset:auto 16px 14px 16px; display:flex; justify-content:space-between; gap:12px; align-items:end">
+                <div style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; color: rgba(26,28,29,.72)">Elevated presentation</div>
+                <div style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; color: rgba(26,28,29,.60)">Replace with real media</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="overflow:hidden; border-radius: calc(var(--radius) + 8px)">
+            <div style="aspect-ratio: 4/5; background: linear-gradient(135deg, rgba(20,22,23,.10), rgba(20,22,23,.02)); position:relative">
+              <img alt="Neighborhood lifestyle (placeholder)" loading="lazy" decoding="async"
+                src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='900' height='1100'><rect width='100%25' height='100%25' fill='%23F5F1E9'/><circle cx='680' cy='240' r='170' fill='%23B5674A' fill-opacity='0.18'/><rect x='70' y='90' width='760' height='920' rx='44' fill='%23141617' fill-opacity='0.08'/><text x='50%25' y='52%25' text-anchor='middle' fill='%23141617' fill-opacity='0.45' font-family='Lato, Arial' font-size='26' letter-spacing='3'>GALLERY</text></svg>"/>
+            </div>
+          </div>
+
+          <div class="card" style="overflow:hidden; border-radius: calc(var(--radius) + 8px)">
+            <div style="aspect-ratio: 4/5; background: linear-gradient(135deg, rgba(20,22,23,.10), rgba(20,22,23,.02)); position:relative">
+              <img alt="Detail shot (placeholder)" loading="lazy" decoding="async"
+                src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='900' height='1100'><rect width='100%25' height='100%25' fill='%23F5F1E9'/><rect x='70' y='90' width='760' height='920' rx='44' fill='%23141617' fill-opacity='0.08'/><path d='M170 820 C340 700, 520 940, 720 740' stroke='%23B5674A' stroke-width='22' stroke-linecap='round' fill='none' opacity='0.35'/><text x='50%25' y='52%25' text-anchor='middle' fill='%23141617' fill-opacity='0.45' font-family='Lato, Arial' font-size='26' letter-spacing='3'>IMAGES</text></svg>"/>
+            </div>
           </div>
         </div>
       </div>
