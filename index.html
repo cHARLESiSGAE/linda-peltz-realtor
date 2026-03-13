@@ -43,12 +43,9 @@
     }
 
     /* Custom cursor */
-    /* Only hide the system cursor when we have a "real" mouse cursor. */
-    @media (hover:hover) and (pointer:fine){
-      body{cursor:none;}
-    }
+    /* NOTE: We keep the system cursor visible to avoid "cursor disappears while scrolling" behavior
+       some browsers exhibit when `cursor: none` is used (trackpad / momentum scroll). */
     @media (hover:none), (pointer:coarse){
-      body{cursor:auto;}
       .cursor, .cursor-dot{display:none!important;}
     }
     .cursor{
